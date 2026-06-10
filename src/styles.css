@@ -1,3 +1,58 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  @font-face { font-family:'Inter Tight'; font-weight:400; src:url('/assets/fonts/InterTight-Regular.ttf') format('truetype'); font-display:swap; }
+  @font-face { font-family:'Inter Tight'; font-weight:500; src:url('/assets/fonts/InterTight-Medium.ttf') format('truetype'); font-display:swap; }
+  @font-face { font-family:'Inter Tight'; font-weight:600; src:url('/assets/fonts/InterTight-SemiBold.ttf') format('truetype'); font-display:swap; }
+  @font-face { font-family:'Inter Tight'; font-weight:700; src:url('/assets/fonts/InterTight-Bold.ttf') format('truetype'); font-display:swap; }
+  @font-face { font-family:'Inter Tight'; font-weight:900; src:url('/assets/fonts/InterTight-Black.ttf') format('truetype'); font-display:swap; }
+
+  :root {
+    --paper: 0 0% 100%;
+    --paper-bg: 36 13% 92%;
+    --ink: 0 0% 10%;
+    --ink-soft: 0 0% 33%;
+    --ink-mute: 0 0% 53%;
+    --hairline: 40 6% 83%;
+    --dept-orange: 17 100% 50%;
+  }
+  .dark {
+    --paper: 0 0% 11%;
+    --paper-bg: 0 0% 7%;
+    --ink: 0 0% 95%;
+    --ink-soft: 0 0% 72%;
+    --ink-mute: 0 0% 55%;
+    --hairline: 0 0% 24%;
+    --dept-orange: 17 100% 52%;
+  }
+
+  .cep-panel, .cep-dialog {
+    --background: 0 0% 12%;
+    --foreground: 0 0% 95%;
+    --accent: 17 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    --card: 0 0% 22%;
+    --card-foreground: 0 0% 95%;
+    --secondary: 0 0% 26%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 0 0% 22%;
+    --muted-foreground: 0 0% 65%;
+    --popover: 0 0% 14%;
+    --popover-foreground: 0 0% 95%;
+    --input: 0 0% 14%;
+    --border: 0 0% 28%;
+    --primary: 0 0% 92%;
+    --primary-foreground: 0 0% 12%;
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 0 0% 95%;
+    --ring: 0 0% 60%;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-paper-bg text-ink font-sans antialiased;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+}
