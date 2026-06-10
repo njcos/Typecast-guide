@@ -767,10 +767,10 @@
      LAVA LAMP HERO — gooey blobs + filter wrapper
   ============================================================ */
 
-  .lava { position:absolute; inset:0; overflow:hidden; isolation:isolate; filter:url(#goo) blur(8px); opacity:0.9; pointer-events:none; }
+  .lava { position:absolute; inset:0; overflow:hidden; isolation:isolate; filter:url(#goo) blur(5px); opacity:0.9; pointer-events:none; will-change:transform; }
   /* screen blend brightens where blobs goo together; the filter isolates the layer
      so overlaps brighten against each other, not against the page background. */
-  .blob { position:absolute; border-radius:50%; background:hsl(var(--dept-orange)); mix-blend-mode:screen; will-change:transform, border-radius; }
+  .blob { position:absolute; border-radius:50%; background:hsl(var(--dept-orange)); mix-blend-mode:screen; will-change:transform; }
 
 }
 

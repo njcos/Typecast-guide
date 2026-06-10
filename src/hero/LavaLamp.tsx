@@ -24,21 +24,20 @@ export function LavaLamp({ count = 6 }: { count?: number }) {
       left: (i * 37) % 90,
       top: (i * 53) % 80,
       radius: organicRadius(rand),
-      morph: organicRadius(rand),
       key: i,
     }
   })
   useGSAP(() => {
     if (prefersReducedMotion()) return
+    // Animate transforms only (drift, scale, slow rotation) — these are GPU-composited,
+    // so the gooey filter doesn't repaint per frame. The organic silhouette is baked in
+    // statically via border-radius and never animated, which keeps the motion smooth.
     ref.current!.querySelectorAll<HTMLElement>('.blob').forEach((el, i) => {
       gsap.to(el, {
-        x: `+=${60 + i * 18}`, y: `+=${-80 - i * 22}`, scale: 1 + (i % 3) * 0.15,
+        x: `+=${60 + i * 18}`, y: `+=${-80 - i * 22}`,
+        scale: 1 + (i % 3) * 0.15, rotate: i % 2 ? 18 : -18,
         duration: 8 + i * 1.7, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: i * 0.6,
-      })
-      // Continuously morph the silhouette + slow rotation so the shapes feel fluid.
-      gsap.to(el, {
-        borderRadius: el.dataset.morph, rotate: i % 2 ? 18 : -18,
-        duration: 6 + i * 1.3, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: i * 0.4,
+        force3D: true,
       })
     })
     gsap.to(ref.current, {
@@ -49,7 +48,7 @@ export function LavaLamp({ count = 6 }: { count?: number }) {
   return (
     <div ref={ref} className="lava" aria-hidden="true">
       {blobs.map(b => (
-        <span key={b.key} className="blob" data-morph={b.morph}
+        <span key={b.key} className="blob"
           style={{ width: b.size, height: b.size, left: `${b.left}%`, top: `${b.top}%`, borderRadius: b.radius, opacity: 0.7 }} />
       ))}
     </div>
