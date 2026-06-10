@@ -11,7 +11,7 @@ export function Section({ id, children }: { id: string; children: ReactNode }) {
     })
   }, { scope: ref })
   return (
-    <section ref={ref} id={id} className="scroll-mt-24 mx-auto w-full max-w-3xl px-6 py-16 md:py-24">
+    <section ref={ref} id={id} className="scroll-mt-24 mx-auto w-full max-w-5xl px-6 py-16 md:py-24">
       {children}
     </section>
   )

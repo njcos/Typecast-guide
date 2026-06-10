@@ -19,7 +19,10 @@ export function Nav() {
     <>
       {/* desktop sidebar */}
       <nav className="fixed left-0 top-0 z-30 hidden h-screen w-60 flex-col border-r border-hairline bg-paper-bg/80 backdrop-blur px-5 py-6 lg:flex">
-        <a href="#top" className="text-sm font-black uppercase tracking-[0.1em] text-ink">Typecast</a>
+        <a href="#top" className="flex items-center gap-1.5 text-sm font-black uppercase tracking-[0.1em] text-ink">
+          <svg className="h-3.5 w-3.5 text-dept" aria-hidden="true"><use href="#dept-mark" /></svg>
+          Typecast
+        </a>
         <ul className="mt-6 flex-1 space-y-1 overflow-y-auto text-sm">
           {SECTIONS.map(s => (
             <li key={s.id}>
@@ -35,7 +38,10 @@ export function Nav() {
 
       {/* mobile top bar + drawer */}
       <div className="fixed inset-x-0 top-0 z-30 flex items-center justify-between border-b border-hairline bg-paper-bg/90 px-4 py-3 backdrop-blur lg:hidden">
-        <a href="#top" className="text-sm font-black uppercase tracking-[0.1em] text-ink">Typecast</a>
+        <a href="#top" className="flex items-center gap-1.5 text-sm font-black uppercase tracking-[0.1em] text-ink">
+          <svg className="h-3.5 w-3.5 text-dept" aria-hidden="true"><use href="#dept-mark" /></svg>
+          Typecast
+        </a>
         <div className="flex items-center gap-2">
           <ThemeToggle />
           <button type="button" aria-label="Open navigation" onClick={() => setOpen(o => !o)} className="h-8 w-8 rounded-md border border-hairline text-ink">≡</button>

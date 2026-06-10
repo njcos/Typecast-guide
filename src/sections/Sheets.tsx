@@ -2,73 +2,6 @@ import { Section } from '../components/Section'
 import { SectionHeader } from '../components/SectionHeader'
 import { Callout } from '../components/Callout'
 import { KeyValueTable } from '../components/KeyValueTable'
-import { RawHtml } from '../components/RawHtml'
-
-const sheetsMockup = `
-<div class="shot">
-  <div class="cep-panel">
-    <div class="flex h-8 items-center gap-3 border-b border-border/40 px-3">
-      <button class="text-foreground"><svg class="h-4 w-4"><use href="#dept-mark"/></svg></button>
-      <span class="flex items-baseline text-[13px] font-black leading-none tracking-[0.06em] text-foreground" style="font-weight:900">
-        <span>DEPT</span><span class="mx-[2px]">/</span>
-        <span class="inline-block overflow-hidden" style="height:1em;line-height:1"><span class="inline-block">SHEETS</span></span>
-      </span>
-    </div>
-    <nav class="flex border-b border-border/40 px-1">
-      <button class="flex flex-1 flex-col items-center gap-1 border-b-2 border-transparent px-1 pt-2 pb-1.5 -mb-px text-muted-foreground"><svg class="h-4 w-4"><use href="#ic-text"/></svg><span class="text-[8.5px] font-semibold tracking-[0.12em]" style="white-space:nowrap">TEXT</span></button>
-      <button class="flex flex-1 flex-col items-center gap-1 border-b-2 border-accent px-1 pt-2 pb-1.5 -mb-px text-foreground"><svg class="h-4 w-4"><use href="#ic-sheets"/></svg><span class="text-[8.5px] font-semibold tracking-[0.12em]" style="white-space:nowrap">SHEETS</span></button>
-      <button class="flex flex-1 flex-col items-center gap-1 border-b-2 border-transparent px-1 pt-2 pb-1.5 -mb-px text-muted-foreground"><svg class="h-4 w-4"><use href="#ic-dupes"/></svg><span class="text-[8.5px] font-semibold tracking-[0.12em]" style="white-space:nowrap">DUPES</span></button>
-      <button class="flex flex-1 flex-col items-center gap-1 border-b-2 border-transparent px-1 pt-2 pb-1.5 -mb-px text-muted-foreground"><svg class="h-4 w-4"><use href="#ic-render"/></svg><span class="text-[8.5px] font-semibold tracking-[0.12em]" style="white-space:nowrap">RENDER</span></button>
-      <button class="flex flex-1 flex-col items-center gap-1 border-b-2 border-transparent px-1 pt-2 pb-1.5 -mb-px text-muted-foreground"><svg class="h-4 w-4"><use href="#ic-cleanup"/></svg><span class="text-[8.5px] font-semibold tracking-[0.12em]" style="white-space:nowrap">CLEANUP</span></button>
-    </nav>
-
-    <!-- SheetsTab.tsx -->
-    <div class="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-2 px-3 py-2">
-      <div class="flex flex-col gap-4">
-        <section class="space-y-2">
-          <h2 class="text-[10px] font-semibold uppercase tracking-[0.1em] text-muted-foreground">Export</h2>
-          <div class="flex items-center gap-2">
-            <button class="btn btn-outline h-8 w-[130px] px-3 text-[10px] font-normal tracking-[0.1em]" style="justify-content:space-between">
-              <span class="truncate">CSV</span>
-              <svg class="ml-2 h-3 w-3 shrink-0 opacity-50"><use href="#lc-chevron-down"/></svg>
-            </button>
-            <button class="btn btn-outline h-8 flex-1 gap-2 px-3 text-[10px] tracking-[0.1em]">
-              <svg class="h-3.5 w-3.5"><use href="#lc-share"/></svg>Export CSV
-            </button>
-          </div>
-        </section>
-
-        <section class="space-y-2">
-          <h2 class="text-[10px] font-semibold uppercase tracking-[0.1em] text-muted-foreground">Validation</h2>
-          <div class="flex flex-col gap-1">
-            <div class="flex items-start gap-2 text-[11px] tracking-[0.04em] leading-snug">
-              <svg class="h-3 w-3 shrink-0 text-emerald-500/80" style="margin-top:3px"><use href="#lc-check"/></svg>
-              <span class="text-muted-foreground">Scan is current</span>
-            </div>
-            <div class="flex items-start gap-2 text-[11px] tracking-[0.04em] leading-snug">
-              <svg class="h-3 w-3 shrink-0 text-emerald-500/80" style="margin-top:3px"><use href="#lc-check"/></svg>
-              <span class="text-muted-foreground">Layer selection is not empty</span>
-            </div>
-            <div class="flex items-start gap-2 text-[11px] tracking-[0.04em] leading-snug">
-              <svg class="h-3 w-3 shrink-0 text-destructive" style="margin-top:3px"><use href="#lc-x"/></svg>
-              <span class="text-destructive">All selected layers have ID tags<span class="text-muted-foreground"> · 17 layer(s) missing ID tags</span></span>
-            </div>
-            <div class="flex items-start gap-2 text-[11px] tracking-[0.04em] leading-snug">
-              <svg class="h-3 w-3 shrink-0 text-emerald-500/80" style="margin-top:3px"><use href="#lc-check"/></svg>
-              <span class="text-muted-foreground">No duplicate IDs</span>
-            </div>
-            <div class="flex items-start gap-2 text-[11px] tracking-[0.04em] leading-snug">
-              <svg class="h-3 w-3 shrink-0 text-emerald-500/80" style="margin-top:3px"><use href="#lc-check"/></svg>
-              <span class="text-muted-foreground">No empty text layers</span>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-  </div>
-  <div class="caption">SHEETS tab · one validation warning</div>
-</div>
-`
 
 export function Sheets() {
   return (
@@ -83,7 +16,7 @@ export function Sheets() {
 
       <div className="cols-2-3">
         <div className="col">
-          <RawHtml html={sheetsMockup} />
+          <img src="assets/screencaps/Sheets Page.png" alt="sheets" />
         </div>
 
         <div className="col">

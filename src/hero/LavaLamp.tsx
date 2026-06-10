@@ -1,11 +1,32 @@
 import { useRef } from 'react'
 import { useGSAP, gsap, prefersReducedMotion } from '../lib/gsap'
 
+// Deterministic pseudo-random in [0,1) from a seed, so shapes are stable across renders.
+function rng(seed: number) {
+  let s = (seed * 2654435761) & 0x7fffffff
+  return () => ((s = (s * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff)
+}
+
+// An asymmetric "blobby" border-radius: 8 values spread the corners so the shape
+// reads as an organic flowing form rather than a perfect circle.
+function organicRadius(rand: () => number) {
+  const v = () => Math.round(28 + rand() * 52) // 28%–80%
+  return `${v()}% ${v()}% ${v()}% ${v()}% / ${v()}% ${v()}% ${v()}% ${v()}%`
+}
+
 export function LavaLamp({ count = 6 }: { count?: number }) {
   const ref = useRef<HTMLDivElement>(null)
   const blobs = Array.from({ length: count }, (_, i) => {
-    const size = 180 + (i % 4) * 70
-    return { size, left: (i * 37) % 90, top: (i * 53) % 80, key: i }
+    const rand = rng(i + 1)
+    const size = 240 + (i % 4) * 95 + Math.round(rand() * 70) // ~240–525px
+    return {
+      size,
+      left: (i * 37) % 90,
+      top: (i * 53) % 80,
+      radius: organicRadius(rand),
+      morph: organicRadius(rand),
+      key: i,
+    }
   })
   useGSAP(() => {
     if (prefersReducedMotion()) return
@@ -13,6 +34,11 @@ export function LavaLamp({ count = 6 }: { count?: number }) {
       gsap.to(el, {
         x: `+=${60 + i * 18}`, y: `+=${-80 - i * 22}`, scale: 1 + (i % 3) * 0.15,
         duration: 8 + i * 1.7, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: i * 0.6,
+      })
+      // Continuously morph the silhouette + slow rotation so the shapes feel fluid.
+      gsap.to(el, {
+        borderRadius: el.dataset.morph, rotate: i % 2 ? 18 : -18,
+        duration: 6 + i * 1.3, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: i * 0.4,
       })
     })
     gsap.to(ref.current, {
@@ -23,8 +49,8 @@ export function LavaLamp({ count = 6 }: { count?: number }) {
   return (
     <div ref={ref} className="lava" aria-hidden="true">
       {blobs.map(b => (
-        <span key={b.key} className="blob"
-          style={{ width: b.size, height: b.size, left: `${b.left}%`, top: `${b.top}%`, opacity: 0.7 }} />
+        <span key={b.key} className="blob" data-morph={b.morph}
+          style={{ width: b.size, height: b.size, left: `${b.left}%`, top: `${b.top}%`, borderRadius: b.radius, opacity: 0.7 }} />
       ))}
     </div>
   )

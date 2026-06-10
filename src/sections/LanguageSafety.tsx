@@ -78,13 +78,44 @@ export function LanguageSafety() {
         <div>
           <h4>Resolving the window</h4>
           <StepList>
-            <li>For an <strong>unrecognized</strong> header: pick the correct language from the dropdown, or choose <span className="mono">Skip / not a language</span> if the column contains notes, internal metadata, or anything that is not a translation target.</li>
+            <li>For an <strong>unrecognized</strong> header: pick the correct language from the dropdown, choose <span className="mono">Skip / not a language</span> if the column contains notes, internal metadata, or anything that is not a translation target, or pick <span className="mono">+ Add new language…</span> to define one that isn't in the list (see below).</li>
             <li>For a <strong>collision</strong>: the two conflicting columns are listed separately. Assign each to a distinct language, or skip whichever one is not needed.</li>
             <li>Once every row has a selection the <strong>Apply mapping</strong> button becomes active. Click it to confirm — duplication proceeds using your explicit choices.</li>
             <li>To abort entirely, click <strong>Cancel</strong>. Nothing is duplicated and the panel reverts to its idle state.</li>
           </StepList>
         </div>
       </div>
+
+      <h3>Adding a custom language</h3>
+      <p>If the column you need isn't in the built-in table — a regional variant, a less common language, or an internal locale — you don't have to settle for an approximate match. The resolution dropdown ends with <span className="mono">+ Add new language…</span>, which opens a small inline form directly under that header.</p>
+
+      <div className="split">
+        <div>
+          <h4>The form</h4>
+          <p>Three fields:</p>
+          <ul>
+            <li><strong>Code</strong> — the locale code Typecast writes and matches on. Two or three lowercase letters with an optional region, e.g. <span className="mono">cy</span> or <span className="mono">zh-cn</span>.</li>
+            <li><strong>Name</strong> — the human-readable label shown in the language pickers.</li>
+            <li><strong>Right-to-left</strong> — tick this if the language reads RTL, so the per-language layout rules below (RTL flag, tracking reset) are applied to it automatically.</li>
+          </ul>
+          <p>The <strong>Add</strong> button stays disabled until both fields are valid. The new language is selected for the header the moment you add it, so you can keep resolving without a round-trip.</p>
+        </div>
+        <div>
+          <h4>What the form rejects</h4>
+          <KeyValueTable>
+            <tr><th>Code is required</th><td>The code field can't be blank.</td></tr>
+            <tr><th>Use 2–3 letters, optional -region</th><td>Must match the pattern — e.g. <span className="mono">cy</span>, <span className="mono">pt-br</span>, <span className="mono">zh-cn</span>.</td></tr>
+            <tr><th>That code already exists</th><td>Codes are unique across built-in and custom languages (case-insensitive).</td></tr>
+            <tr><th>Name is required / that name already exists</th><td>The name can't be blank and can't duplicate another language.</td></tr>
+          </KeyValueTable>
+          <Callout variant="tip">
+            <strong>Custom languages persist.</strong> Once added, a custom language is saved and appears in the picker for every future sheet — you only define it once.
+          </Callout>
+        </div>
+      </div>
+
+      <h3>Manage Languages</h3>
+      <p>You don't need an unrecognized header to curate your custom languages. On the <span className="mono">DUPES</span> tab the <strong>Manage languages</strong> button opens the same <strong>Languages</strong> window in a manage mode that lists every custom language you've added — each shown as <span className="mono">Name (code)</span> with an <strong>RTL</strong> marker where set. From there you can <strong>add</strong> a new language or <strong>delete</strong> one you no longer need. Deleting only removes the definition; comps already duplicated into that language are left untouched.</p>
 
       <h3>Per-language rules applied automatically</h3>
 

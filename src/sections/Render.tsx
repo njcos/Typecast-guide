@@ -2,64 +2,6 @@ import { Section } from '../components/Section'
 import { SectionHeader } from '../components/SectionHeader'
 import { Callout } from '../components/Callout'
 import { DemoSlot } from '../components/DemoSlot'
-import { RawHtml } from '../components/RawHtml'
-
-const renderMockup = `
-<div class="shot">
-  <div class="cep-panel">
-    <div class="flex h-8 items-center gap-3 border-b border-border/40 px-3">
-      <button class="text-foreground"><svg class="h-4 w-4"><use href="#dept-mark"/></svg></button>
-      <span class="flex items-baseline text-[13px] font-black leading-none tracking-[0.06em] text-foreground" style="font-weight:900">
-        <span>DEPT</span><span class="mx-[2px]">/</span>
-        <span class="inline-block overflow-hidden" style="height:1em;line-height:1"><span class="inline-block">RENDER</span></span>
-      </span>
-    </div>
-    <nav class="flex border-b border-border/40 px-1">
-      <button class="flex flex-1 flex-col items-center gap-1 border-b-2 border-transparent px-1 pt-2 pb-1.5 -mb-px text-muted-foreground"><svg class="h-4 w-4"><use href="#ic-text"/></svg><span class="text-[8.5px] font-semibold tracking-[0.12em]" style="white-space:nowrap">TEXT</span></button>
-      <button class="flex flex-1 flex-col items-center gap-1 border-b-2 border-transparent px-1 pt-2 pb-1.5 -mb-px text-muted-foreground"><svg class="h-4 w-4"><use href="#ic-sheets"/></svg><span class="text-[8.5px] font-semibold tracking-[0.12em]" style="white-space:nowrap">SHEETS</span></button>
-      <button class="flex flex-1 flex-col items-center gap-1 border-b-2 border-transparent px-1 pt-2 pb-1.5 -mb-px text-muted-foreground"><svg class="h-4 w-4"><use href="#ic-dupes"/></svg><span class="text-[8.5px] font-semibold tracking-[0.12em]" style="white-space:nowrap">DUPES</span></button>
-      <button class="flex flex-1 flex-col items-center gap-1 border-b-2 border-accent px-1 pt-2 pb-1.5 -mb-px text-foreground"><svg class="h-4 w-4"><use href="#ic-render"/></svg><span class="text-[8.5px] font-semibold tracking-[0.12em]" style="white-space:nowrap">RENDER</span></button>
-      <button class="flex flex-1 flex-col items-center gap-1 border-b-2 border-transparent px-1 pt-2 pb-1.5 -mb-px text-muted-foreground"><svg class="h-4 w-4"><use href="#ic-cleanup"/></svg><span class="text-[8.5px] font-semibold tracking-[0.12em]" style="white-space:nowrap">CLEANUP</span></button>
-    </nav>
-
-    <!-- RenderPage.tsx -->
-    <div class="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-4 px-3 py-2">
-      <!-- Scope section -->
-      <div class="space-y-1">
-        <h2 class="flex items-center text-[10px] font-semibold uppercase tracking-[0.1em] text-muted-foreground">
-          Scope
-          <span class="ml-auto"><svg class="h-3 w-3 text-muted-foreground"><use href="#lc-refresh-cw"/></svg></span>
-        </h2>
-        <div class="flex rounded-md border border-input bg-background p-0.5" style="gap:2px">
-          <button class="flex-1 rounded-[5px] py-1.5 text-[8px] font-semibold tracking-[0.08em] bg-accent text-accent-foreground">ACTIVE COMP</button>
-          <button class="flex-1 rounded-[5px] py-1.5 text-[8px] font-semibold tracking-[0.08em] text-muted-foreground">SELECTED · 4</button>
-        </div>
-      </div>
-      <!-- Render section -->
-      <div class="space-y-1">
-        <h2 class="text-[10px] font-semibold uppercase tracking-[0.1em] text-muted-foreground">Render</h2>
-        <div class="flex gap-2">
-          <button class="btn h-9 flex-1 bg-accent text-accent-foreground gap-1.5 text-[9px] tracking-[0.08em]">
-            <svg class="h-3.5 w-3.5"><use href="#lc-play"/></svg>Render Active
-          </button>
-          <button class="btn btn-outline h-9 flex-1 gap-1.5 text-[9px] tracking-[0.08em]">
-            <svg class="h-3.5 w-3.5"><use href="#lc-plus"/></svg>Add to Queue
-          </button>
-        </div>
-      </div>
-      <!-- Selection section -->
-      <div class="space-y-1">
-        <h2 class="text-[10px] font-semibold uppercase tracking-[0.1em] text-muted-foreground">Selection</h2>
-        <div>
-          <button class="action-row"><svg><use href="#lc-crosshair"/></svg><span>Select Comps in Folder</span></button>
-          <button class="action-row"><svg><use href="#ic-sheets"/></svg><span>Create Contact Sheet · 4</span></button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="caption">RENDER tab</div>
-</div>
-`
 
 export function Render() {
   return (
@@ -74,7 +16,7 @@ export function Render() {
 
       <div className="cols-2-3">
         <div className="col">
-          <RawHtml html={renderMockup} />
+          <img src="assets/screencaps/Render Page.png" alt="render" />
 
           <Callout variant="tip">
             <strong>Render settings &amp; output module</strong>

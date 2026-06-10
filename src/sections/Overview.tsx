@@ -34,7 +34,7 @@ export function Overview() {
 
           <h3>System requirements</h3>
           <KeyValueTable>
-            <tr><th>Host</th><td>Adobe After Effects 2023 or later</td></tr>
+            <tr><th>Host</th><td>Adobe After Effects 2026+</td></tr>
             <tr><th>Platform</th><td>macOS or Windows</td></tr>
             <tr><th>Network</th><td>Required at activation; license re-checks every 24 hours with a 7-day grace window</td></tr>
             <tr><th>License</th><td>Per-machine key issued by your DEPT administrator</td></tr>
@@ -45,7 +45,7 @@ export function Overview() {
           <h3>Install</h3>
           <StepList>
             <li>Quit After Effects.</li>
-            <li>Double-click the supplied <span className="mono">.zxp</span> with Anastasiy's Extension Manager (or use the included installer).</li>
+            <li>Drag and drop the supplied <span className="mono">.zxp</span> into AEScript's ZXP installer.</li>
             <li>Launch After Effects.</li>
             <li>Open <strong>Window → Extensions → Typecast</strong>. Dock the panel wherever you keep your tools — most people dock it next to the timeline.</li>
             <li>Enter your license key on the home screen and click <strong>Save</strong>.</li>

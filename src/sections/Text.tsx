@@ -2,49 +2,6 @@ import { Section } from '../components/Section'
 import { SectionHeader } from '../components/SectionHeader'
 import { Callout } from '../components/Callout'
 import { DemoSlot } from '../components/DemoSlot'
-import { RawHtml } from '../components/RawHtml'
-
-const textMockup = `
-<div class="shot">
-  <div class="cep-panel">
-    <div class="flex h-8 items-center gap-3 border-b border-border/40 px-3">
-      <button class="text-foreground"><svg class="h-4 w-4"><use href="#dept-mark"/></svg></button>
-      <span class="flex items-baseline text-[13px] font-black leading-none tracking-[0.06em] text-foreground" style="font-weight:900">
-        <span>DEPT</span><span class="mx-[2px]">/</span>
-        <span class="inline-block overflow-hidden" style="height:1em;line-height:1"><span class="inline-block">TEXT</span></span>
-      </span>
-    </div>
-    <nav class="flex border-b border-border/40 px-1">
-      <button class="flex flex-1 flex-col items-center gap-1 border-b-2 border-accent px-1 pt-2 pb-1.5 -mb-px text-foreground"><svg class="h-4 w-4"><use href="#ic-text"/></svg><span class="text-[8.5px] font-semibold tracking-[0.12em]" style="white-space:nowrap">TEXT</span></button>
-      <button class="flex flex-1 flex-col items-center gap-1 border-b-2 border-transparent px-1 pt-2 pb-1.5 -mb-px text-muted-foreground"><svg class="h-4 w-4"><use href="#ic-sheets"/></svg><span class="text-[8.5px] font-semibold tracking-[0.12em]" style="white-space:nowrap">SHEETS</span></button>
-      <button class="flex flex-1 flex-col items-center gap-1 border-b-2 border-transparent px-1 pt-2 pb-1.5 -mb-px text-muted-foreground"><svg class="h-4 w-4"><use href="#ic-dupes"/></svg><span class="text-[8.5px] font-semibold tracking-[0.12em]" style="white-space:nowrap">DUPES</span></button>
-      <button class="flex flex-1 flex-col items-center gap-1 border-b-2 border-transparent px-1 pt-2 pb-1.5 -mb-px text-muted-foreground"><svg class="h-4 w-4"><use href="#ic-render"/></svg><span class="text-[8.5px] font-semibold tracking-[0.12em]" style="white-space:nowrap">RENDER</span></button>
-      <button class="flex flex-1 flex-col items-center gap-1 border-b-2 border-transparent px-1 pt-2 pb-1.5 -mb-px text-muted-foreground"><svg class="h-4 w-4"><use href="#ic-cleanup"/></svg><span class="text-[8.5px] font-semibold tracking-[0.12em]" style="white-space:nowrap">CLEANUP</span></button>
-    </nav>
-
-    <!-- TextCompPage.tsx -->
-    <div class="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-2 px-3 py-2">
-      <div class="flex flex-col gap-2">
-        <div class="text-[10px] font-semibold uppercase tracking-[0.1em] text-muted-foreground">Build</div>
-        <div class="flex items-center gap-2">
-          <button class="btn btn-outline btn-size-icon h-9 w-9 shrink-0"><svg class="h-5 w-5"><use href="#lc-scan-line"/></svg></button>
-          <span class="ml-1 rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">45 Layers</span>
-          <button class="btn btn-outline btn-size-icon h-9 w-9 shrink-0"><svg class="h-5 w-5"><use href="#lc-bookmark-plus"/></svg></button>
-          <button class="btn btn-outline btn-size-icon h-9 w-9 shrink-0"><svg class="h-5 w-5"><use href="#lc-plus"/></svg></button>
-        </div>
-        <div class="text-[10px] font-semibold uppercase tracking-[0.1em] text-muted-foreground">Edit Comp</div>
-        <button class="action-row"><svg><use href="#lc-crosshair"/></svg><span>Focus Text</span></button>
-        <button class="action-row"><svg><use href="#lc-grip-vertical"/></svg><span>Reflow Layout</span></button>
-        <button class="btn btn-outline h-10 justify-start gap-3 px-3 text-xs text-red-500 w-full">
-          <svg class="h-4 w-4 shrink-0"><use href="#lc-trash-2"/></svg>
-          Remove Selected from Edit Comp
-        </button>
-      </div>
-    </div>
-  </div>
-  <div class="caption">TEXT tab after a successful scan</div>
-</div>
-`
 
 export function Text() {
   return (
@@ -59,7 +16,7 @@ export function Text() {
 
       <div className="cols-2-3">
         <div className="col">
-          <RawHtml html={textMockup} />
+          <img src="assets/screencaps/Text Panel.png" alt="text panel" />
 
           <Callout variant="tip">
             <strong>Hiding a layer from the scan</strong>
@@ -99,13 +56,20 @@ export function Text() {
 
       <div className="split wide-left">
         <div>
-          <h3>Edit Comp actions</h3>
+          <h3>Text Utilities</h3>
           <div className="feature-list">
             <div className="feature">
               <div className="icon"><svg viewBox="0 0 24 24"><use href="#lc-crosshair"/></svg></div>
               <div className="meta">
                 <div className="name">Focus Text</div>
                 <div className="body">Jumps to and focuses the underlying editable text layer for the layer currently selected in the Edit Comp.</div>
+              </div>
+            </div>
+            <div className="feature">
+              <div className="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="m3 7 5 5-5 5V7"/><path d="m21 7-5 5 5 5V7"/><path d="M12 2v2"/><path d="M12 8v2"/><path d="M12 14v2"/><path d="M12 20v2"/></svg></div>
+              <div className="meta">
+                <div className="name">Flip Text Direction</div>
+                <div className="body">For right-to-left languages. Expand the row for two options, both on by default: <strong>Flip Alignment</strong> reverses the justification on the master source layer, and <strong>Mirror position</strong> mirrors every linked instance's position across the comp. The whole flip is a single undo step.</div>
               </div>
             </div>
             <div className="feature">
@@ -123,6 +87,9 @@ export function Text() {
               </div>
             </div>
           </div>
+          <Callout variant="warn">
+            <strong>Point text gets a heads-up.</strong> If <strong>Mirror position</strong> is on and a selected instance is point text rather than a paragraph box, a dialog warns <em>“Layer is point text. For best results convert to paragraph text.”</em> with <strong>Cancel</strong> and <strong>Proceed</strong>. Mirroring point text is less reliable than a box, so convert when you can.
+          </Callout>
         </div>
         <div>
           <h3>Cross-comp match review</h3>
@@ -131,10 +98,32 @@ export function Text() {
           </p>
           <Callout variant="tip">
             <strong>Where matches show up</strong>
-            The review box lives on the <span className="mono">TEXT</span> tab, directly beneath the Edit Comp actions. It only appears when there is something to confirm — a clean build shows no box at all.
+            The review box lives on the <span className="mono">TEXT</span> tab, directly beneath the Text Utilities actions. It only appears when there is something to confirm — a clean build shows no box at all.
           </Callout>
         </div>
       </div>
+
+      <h3>Per-character styling carries over</h3>
+      <p>
+        Style a single word differently inside a text layer — a brand name in another
+        font, one phrase in an accent colour — and Typecast does its best to keep that
+        styling when the layer's text is overwritten during <strong>Duplicate &amp;
+        Translate</strong> or <strong>Apply Translations</strong>. It captures the
+        per-character styling (fill colour, font, size, faux bold/italic) before the
+        overwrite and re-applies it to the matching words in the translated text, so the
+        look propagates across every sibling comp.
+      </p>
+
+      <DemoSlot src="demos/styled-span-carryover.gif" caption="A styled brand word keeps its look as the translation is applied across sibling comps." />
+
+      <Callout variant="warn">
+        <strong>It's a best effort, not a guarantee.</strong> Matching is by exact text, so
+        if a styled word is altered by the translation — different casing, punctuation, or
+        spelling — the styling won't carry and the word returns in the layer's base style.
+        Re-running into an <em>existing</em> language folder also can't recover styling that
+        was already flattened; delete the folder and duplicate fresh to restore it. Always
+        spot-check brand words after a pass.
+      </Callout>
     </Section>
   )
 }

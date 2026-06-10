@@ -38,12 +38,12 @@ export default function App() {
         <DupesAll />
         <Render />
         <Cleanup />
+        <License />
         <LanguageSafety />
         <Naming />
         <CrossComp />
-        <License />
-        <Troubleshooting />
         <Glossary />
+        <Troubleshooting />
       </main>
       <Footer />
     </ThemeProvider>

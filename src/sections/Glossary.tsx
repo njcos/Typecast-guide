@@ -6,7 +6,7 @@ import { KeyValueTable } from '../components/KeyValueTable'
 export function Glossary() {
   return (
     <Section id="glossary">
-      <SectionHeader kicker="CHAPTER 10" title="Glossary & tips." />
+      <SectionHeader kicker="REFERENCE" title="Glossary & tips." />
       <p className="lede">
         A short reference. Keep this page near your monitor for the first
         week or two.

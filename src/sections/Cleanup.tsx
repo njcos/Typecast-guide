@@ -3,67 +3,6 @@ import { SectionHeader } from '../components/SectionHeader'
 import { Callout } from '../components/Callout'
 import { StepList } from '../components/StepList'
 import { DemoSlot } from '../components/DemoSlot'
-import { RawHtml } from '../components/RawHtml'
-
-const cleanupActionsMockup = `
-<div class="shot">
-  <div class="cep-panel">
-    <div class="flex h-8 items-center gap-3 border-b border-border/40 px-3">
-      <button class="text-foreground"><svg class="h-4 w-4"><use href="#dept-mark"/></svg></button>
-      <span class="flex items-baseline text-[13px] font-black leading-none tracking-[0.06em] text-foreground" style="font-weight:900">
-        <span>DEPT</span><span class="mx-[2px]">/</span>
-        <span class="inline-block overflow-hidden" style="height:1em;line-height:1"><span class="inline-block">CLEANUP</span></span>
-      </span>
-    </div>
-    <nav class="flex border-b border-border/40 px-1">
-      <button class="flex flex-1 flex-col items-center gap-1 border-b-2 border-transparent px-1 pt-2 pb-1.5 -mb-px text-muted-foreground"><svg class="h-4 w-4"><use href="#ic-text"/></svg><span class="text-[8.5px] font-semibold tracking-[0.12em]" style="white-space:nowrap">TEXT</span></button>
-      <button class="flex flex-1 flex-col items-center gap-1 border-b-2 border-transparent px-1 pt-2 pb-1.5 -mb-px text-muted-foreground"><svg class="h-4 w-4"><use href="#ic-sheets"/></svg><span class="text-[8.5px] font-semibold tracking-[0.12em]" style="white-space:nowrap">SHEETS</span></button>
-      <button class="flex flex-1 flex-col items-center gap-1 border-b-2 border-transparent px-1 pt-2 pb-1.5 -mb-px text-muted-foreground"><svg class="h-4 w-4"><use href="#ic-dupes"/></svg><span class="text-[8.5px] font-semibold tracking-[0.12em]" style="white-space:nowrap">DUPES</span></button>
-      <button class="flex flex-1 flex-col items-center gap-1 border-b-2 border-transparent px-1 pt-2 pb-1.5 -mb-px text-muted-foreground"><svg class="h-4 w-4"><use href="#ic-render"/></svg><span class="text-[8.5px] font-semibold tracking-[0.12em]" style="white-space:nowrap">RENDER</span></button>
-      <button class="flex flex-1 flex-col items-center gap-1 border-b-2 border-accent px-1 pt-2 pb-1.5 -mb-px text-foreground"><svg class="h-4 w-4"><use href="#ic-cleanup"/></svg><span class="text-[8.5px] font-semibold tracking-[0.12em]" style="white-space:nowrap">CLEANUP</span></button>
-    </nav>
-
-    <!-- CleanupPage.tsx — Actions section -->
-    <div class="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-4 px-3 py-2">
-      <div class="space-y-2">
-        <h2 class="text-[10px] font-semibold uppercase tracking-[0.1em] text-muted-foreground">Actions</h2>
-        <div>
-          <button class="action-row"><svg><use href="#lc-palette"/></svg><span>Color and Organize</span></button>
-          <button class="action-row"><svg><use href="#lc-crosshair"/></svg><span>Crop to Contents</span></button>
-          <button class="action-row"><svg><use href="#ic-bake"/></svg><span>NoIP</span></button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="caption">CLEANUP tab — Actions</div>
-</div>
-`
-
-const noipDialogMockup = `
-<div class="shot" style="margin-top:8pt">
-  <div class="cep-panel">
-    <div class="cep-overlay">
-      <div class="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-2 px-3 py-2" style="filter:brightness(.5); min-height:140px">
-        <button class="action-row"><svg><use href="#lc-palette"/></svg><span>Color and Organize</span></button>
-        <button class="action-row"><svg><use href="#lc-crosshair"/></svg><span>Crop to Contents</span></button>
-        <button class="action-row"><svg><use href="#ic-bake"/></svg><span>NoIP</span></button>
-      </div>
-      <div class="cep-overlay-mask"></div>
-      <div class="cep-dialog">
-        <div class="cep-dialog-header">
-          <h2 class="cep-dialog-title">NoIP?</h2>
-          <p class="cep-dialog-description">Bakes all Source Text expressions that reference <span class="font-mono">Change_Text_Here</span>, deletes those master comps, and prunes empty parent folders. One <strong>Cmd+Z</strong> reverts everything.</p>
-        </div>
-        <div class="cep-dialog-footer">
-          <button class="btn btn-ghost h-7 px-3 text-[10px] tracking-[0.1em] text-muted-foreground">Cancel</button>
-          <button class="btn btn-outline h-7 px-3 text-[10px] tracking-[0.1em]">NoIP</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="caption">NoIP confirm dialog</div>
-</div>
-`
 
 export function Cleanup() {
   return (
@@ -78,8 +17,8 @@ export function Cleanup() {
 
       <div className="cols-2-3">
         <div className="col">
-          <RawHtml html={cleanupActionsMockup} />
-          <RawHtml html={noipDialogMockup} />
+          <img src="assets/screencaps/Cleanup Page.png" alt="cleanup" />
+          <img src="assets/screencaps/NoIP.png" alt="NoIP" />
 
           <Callout variant="tip">
             <strong>One Cmd+Z</strong>

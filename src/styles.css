@@ -87,11 +87,16 @@
   code, .mono {
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size: 0.75rem;      /* 9pt */
-    background: #F4F2EE;
-    padding: 0 4px;          /* 0 3pt */
-    border-radius: 3px;      /* 2pt */
+    background: hsl(var(--dept-orange) / 0.12);
+    color: hsl(17 95% 40%);
+    padding: 1px 5px;
+    border-radius: 4px;
     overflow-wrap: anywhere;
     word-break: break-word;
+  }
+  .dark code, .dark .mono {
+    background: hsl(var(--dept-orange) / 0.20);
+    color: hsl(17 100% 66%);
   }
 
   /* ============================================================
@@ -214,6 +219,9 @@
     width: 17px;             /* 13pt */
     height: 17px;
   }
+  /* The icon tile keeps its light background in both themes, so the glyph
+     must stay dark in dark mode rather than flipping to light --ink. */
+  .dark .feature .icon { color: hsl(0 0% 10%); }
   .feature .meta {
     padding-top: 1px;
   }
@@ -336,6 +344,24 @@
 
   .col {
     min-width: 0;
+  }
+
+  /* License section: keep the two panel screencaps the same size and
+     aligned, regardless of each image's intrinsic aspect ratio. */
+  #license .col { display: flex; flex-direction: column; }
+  #license .panel-shot {
+    display: block;
+    width: 100%;
+    height: 32rem;
+    object-fit: contain;
+    object-position: center bottom;
+    margin-top: auto;
+  }
+
+  /* Tagging section: give the screenshot column extra width so the shot reads
+     larger. Desktop only — below the cols breakpoint it stacks to one column. */
+  @media (min-width: 881px) {
+    #tagging .cols-2-3 { grid-template-columns: 1.5fr 1fr; }
   }
 
   /* ============================================================
@@ -700,10 +726,21 @@
     font-size: 1.083rem;    /* 13pt */
     margin: 0 0 19px;       /* 14pt */
   }
-  .band.dark .mono { background: hsl(var(--dept-orange)); color: #fff; }
+  .band.dark .mono { background: hsl(var(--dept-orange) / 0.22); color: hsl(17 100% 70%); }
   .band.dark .tip  { color: #cfcfcf; }
   .band.dark .tip strong { color: #fff; }
   .band.dark .anatomy { scrollbar-color: #555 transparent; }
+  /* Anatomy chips sit on the always-dark band. The base .seg uses a light
+     fill + --ink value, which goes near-white-on-white in dark mode. Give
+     them a coherent dark-surface treatment with high-contrast values. */
+  .band.dark .seg {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+  .band.dark .seg .v { color: #fff; }
+  .band.dark .seg .l { color: #b0b0b0; }
+  .band.dark .seg.req { border-color: hsl(var(--dept-orange)); }
+  .band.dark .seg.req .l { color: hsl(var(--dept-orange)); }
 
   /* .cols / .cols-2-3 / .cols-3-2 — two-column layout with named ratio variants */
   .cols,
@@ -730,9 +767,10 @@
      LAVA LAMP HERO — gooey blobs + filter wrapper
   ============================================================ */
 
-  .lava { position:absolute; inset:0; overflow:hidden; filter:url(#goo) blur(8px); pointer-events:none; }
-  .blob { position:absolute; border-radius:9999px; background:hsl(var(--dept-orange)); mix-blend-mode:normal; will-change:transform; }
-  .dark .blob { mix-blend-mode:screen; }
+  .lava { position:absolute; inset:0; overflow:hidden; isolation:isolate; filter:url(#goo) blur(8px); opacity:0.9; pointer-events:none; }
+  /* screen blend brightens where blobs goo together; the filter isolates the layer
+     so overlaps brighten against each other, not against the page background. */
+  .blob { position:absolute; border-radius:50%; background:hsl(var(--dept-orange)); mix-blend-mode:screen; will-change:transform, border-radius; }
 
 }
 

@@ -11,10 +11,10 @@ export const SECTIONS: SectionMeta[] = [
   { id: 'dupes-all', label: '06·', title: 'Duplicating all languages' },
   { id: 'render', label: '07', title: 'Render' },
   { id: 'cleanup', label: '08', title: 'Cleanup' },
+  { id: 'license', label: '09', title: 'License states' },
   { id: 'language-safety', label: 'REF', title: 'Language safety' },
   { id: 'naming', label: 'REF', title: 'Naming conventions' },
   { id: 'cross-comp', label: 'REF', title: 'Cross-comp matching' },
-  { id: 'license', label: '09', title: 'License states' },
+  { id: 'glossary', label: 'REF', title: 'Glossary & tips' },
   { id: 'troubleshooting', label: 'HELP', title: 'Troubleshooting' },
-  { id: 'glossary', label: '10', title: 'Glossary & tips' },
 ]
