@@ -7,6 +7,10 @@ import { Overview } from './sections/Overview'
 import { PanelAnatomy } from './sections/PanelAnatomy'
 import { Home } from './sections/Home'
 import { Text } from './sections/Text'
+import { Tagging } from './sections/Tagging'
+import { Sheets } from './sections/Sheets'
+import { Dupes } from './sections/Dupes'
+import { DupesAll } from './sections/DupesAll'
 
 export default function App() {
   return (
@@ -19,6 +23,10 @@ export default function App() {
         <PanelAnatomy />
         <Home />
         <Text />
+        <Tagging />
+        <Sheets />
+        <Dupes />
+        <DupesAll />
       </main>
       <Footer />
     </ThemeProvider>
