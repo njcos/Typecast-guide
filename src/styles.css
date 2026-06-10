@@ -665,6 +665,12 @@
   /* .divider — thin horizontal rule */
   .divider { height: 1px; background: hsl(var(--hairline)); margin: 16px 0; }
 
+  /* .small — reduced body text */
+  .small { font-size: 0.81em; }
+
+  /* .no-break — prevent column/page breaks inside on print */
+  .no-break { break-inside: avoid; }
+
   /* .split — two-column text / visual grid */
   .split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; margin: 27px 0; }
   .split.wide-left  { grid-template-columns: 1.45fr 1fr; }

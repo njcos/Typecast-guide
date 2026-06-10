@@ -15,6 +15,10 @@ import { Render } from './sections/Render'
 import { Cleanup } from './sections/Cleanup'
 import { LanguageSafety } from './sections/LanguageSafety'
 import { Naming } from './sections/Naming'
+import { CrossComp } from './sections/CrossComp'
+import { License } from './sections/License'
+import { Troubleshooting } from './sections/Troubleshooting'
+import { Glossary } from './sections/Glossary'
 
 export default function App() {
   return (
@@ -35,6 +39,10 @@ export default function App() {
         <Cleanup />
         <LanguageSafety />
         <Naming />
+        <CrossComp />
+        <License />
+        <Troubleshooting />
+        <Glossary />
       </main>
       <Footer />
     </ThemeProvider>
