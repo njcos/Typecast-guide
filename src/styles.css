@@ -658,4 +658,66 @@
   .seg.req { border-color: hsl(var(--dept-orange)); }
   .seg.req .l { color: hsl(var(--dept-orange)); }
 
+  /* ============================================================
+     LAYOUT PRIMITIVES — .split / .band / .cols / .statrow / .divider
+  ============================================================ */
+
+  /* .divider — thin horizontal rule */
+  .divider { height: 1px; background: hsl(var(--hairline)); margin: 16px 0; }
+
+  /* .split — two-column text / visual grid */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; margin: 27px 0; }
+  .split.wide-left  { grid-template-columns: 1.45fr 1fr; }
+  .split.wide-right { grid-template-columns: 1fr 1.45fr; }
+  .split.center     { align-items: center; }
+  .split > * { min-width: 0; }
+
+  /* .band — full-width feature block (light or dark) */
+  .band {
+    margin: 32px 0;
+    background: hsl(var(--paper));
+    border: 1px solid hsl(var(--hairline));
+    border-radius: 12px;
+    padding: 32px 37px;
+  }
+  .band.dark { background: #1c1c1c; color: #e8e8e8; border: 0; }
+  .band.dark h2,
+  .band.dark h3,
+  .band.dark h4 { color: #fff; }
+  .band.dark p,
+  .band.dark .body { color: #c9c9c9; }
+  .band > :first-child { margin-top: 0; }
+  .band-title {
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 1.083rem;    /* 13pt */
+    margin: 0 0 19px;       /* 14pt */
+  }
+  .band.dark .mono { background: hsl(var(--dept-orange)); color: #fff; }
+  .band.dark .tip  { color: #cfcfcf; }
+  .band.dark .tip strong { color: #fff; }
+  .band.dark .anatomy { scrollbar-color: #555 transparent; }
+
+  /* .cols / .cols-2-3 / .cols-3-2 — two-column layout with named ratio variants */
+  .cols,
+  .cols-2-3,
+  .cols-3-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 29px; }
+  .cols > .col,
+  .cols-2-3 > .col,
+  .cols-3-2 > .col { min-width: 0; }
+
+  /* .statrow — headline-numbers stat grid */
+  .statrow        { display: grid; grid-template-columns: repeat(4, 1fr); gap: 19px; margin: 27px 0; }
+  .statrow.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+  /* Responsive: collapse to single / two columns on narrow viewports */
+  @media (max-width: 880px) {
+    .split,
+    .split.wide-left,
+    .split.wide-right     { grid-template-columns: 1fr; gap: 24px; }
+    .statrow,
+    .statrow.cols-3       { grid-template-columns: repeat(2, 1fr); }
+  }
+
 }
