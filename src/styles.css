@@ -720,4 +720,12 @@
     .statrow.cols-3       { grid-template-columns: repeat(2, 1fr); }
   }
 
+  /* ============================================================
+     LAVA LAMP HERO — gooey blobs + filter wrapper
+  ============================================================ */
+
+  .lava { position:absolute; inset:0; overflow:hidden; filter:url(#goo) blur(8px); pointer-events:none; }
+  .blob { position:absolute; border-radius:9999px; background:hsl(var(--dept-orange)); mix-blend-mode:normal; will-change:transform; }
+  .dark .blob { mix-blend-mode:screen; }
+
 }
