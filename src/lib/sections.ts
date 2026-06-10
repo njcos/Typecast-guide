@@ -1,4 +1,4 @@
-export interface SectionMeta { id: string; label: string; title: string }
+export interface SectionMeta { id: string; label: string; title: string; divider?: boolean }
 
 export const SECTIONS: SectionMeta[] = [
   { id: 'overview', label: '01', title: 'Overview & install' },
@@ -12,9 +12,9 @@ export const SECTIONS: SectionMeta[] = [
   { id: 'render', label: '07', title: 'Render' },
   { id: 'cleanup', label: '08', title: 'Cleanup' },
   { id: 'license', label: '09', title: 'License states' },
-  { id: 'language-safety', label: 'REF', title: 'Language safety' },
-  { id: 'naming', label: 'REF', title: 'Naming conventions' },
-  { id: 'cross-comp', label: 'REF', title: 'Cross-comp matching' },
-  { id: 'glossary', label: 'REF', title: 'Glossary & tips' },
-  { id: 'troubleshooting', label: 'HELP', title: 'Troubleshooting' },
+  { id: 'language-safety', label: '', title: 'Language safety', divider: true },
+  { id: 'naming', label: '', title: 'Naming conventions' },
+  { id: 'cross-comp', label: '', title: 'Cross-comp matching' },
+  { id: 'glossary', label: '', title: 'Glossary & tips' },
+  { id: 'troubleshooting', label: '', title: 'Troubleshooting' },
 ]

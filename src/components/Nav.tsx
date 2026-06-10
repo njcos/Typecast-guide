@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { SECTIONS } from '../lib/sections'
 import { useScrollSpy } from '../lib/useScrollSpy'
 import { ThemeToggle } from '../theme/ThemeToggle'
@@ -25,12 +25,15 @@ export function Nav() {
         </a>
         <ul className="mt-6 flex-1 space-y-1 overflow-y-auto text-sm">
           {SECTIONS.map(s => (
-            <li key={s.id}>
-              <a href={`#${s.id}`}
-                 className={`flex gap-2 rounded px-2 py-1 transition-colors ${active === s.id ? 'text-dept' : 'text-ink-soft hover:text-ink'}`}>
-                <span className="w-8 shrink-0 text-ink-mute">{s.label}</span>{s.title}
-              </a>
-            </li>
+            <Fragment key={s.id}>
+              {s.divider && <li aria-hidden="true" className="!my-6 border-t border-hairline" />}
+              <li>
+                <a href={`#${s.id}`}
+                   className={`flex gap-2 rounded px-2 py-1 transition-colors ${active === s.id ? 'text-dept' : 'text-ink-soft hover:text-ink'}`}>
+                  {s.label && <span className="w-8 shrink-0 text-ink-mute">{s.label}</span>}{s.title}
+                </a>
+              </li>
+            </Fragment>
           ))}
         </ul>
         <div className="pt-4"><ThemeToggle /></div>
@@ -51,7 +54,10 @@ export function Nav() {
         <div className="fixed inset-0 z-20 bg-paper-bg/95 pt-16 lg:hidden" onClick={() => setOpen(false)}>
           <ul className="space-y-1 px-6 text-base">
             {SECTIONS.map(s => (
-              <li key={s.id}><a href={`#${s.id}`} className="block py-2 text-ink-soft">{s.title}</a></li>
+              <Fragment key={s.id}>
+                {s.divider && <li aria-hidden="true" className="!my-6 border-t border-hairline" />}
+                <li><a href={`#${s.id}`} className="block py-2 text-ink-soft">{s.title}</a></li>
+              </Fragment>
             ))}
           </ul>
         </div>

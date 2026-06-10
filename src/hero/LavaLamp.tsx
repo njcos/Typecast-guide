@@ -32,12 +32,14 @@ export function LavaLamp({ count = 6 }: { count?: number }) {
     // Animate transforms only (drift, scale, slow rotation) — these are GPU-composited,
     // so the gooey filter doesn't repaint per frame. The organic silhouette is baked in
     // statically via border-radius and never animated, which keeps the motion smooth.
+    // repeatRefresh re-rolls every random() target each cycle, so the drift wanders
+    // instead of looping the same path.
     ref.current!.querySelectorAll<HTMLElement>('.blob').forEach((el, i) => {
       gsap.to(el, {
-        x: `+=${60 + i * 18}`, y: `+=${-80 - i * 22}`,
-        scale: 1 + (i % 3) * 0.15, rotate: i % 2 ? 18 : -18,
-        duration: 8 + i * 1.7, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: i * 0.6,
-        force3D: true,
+        x: 'random(-140, 140)', y: 'random(-160, 120)',
+        scale: 'random(0.85, 1.35)', rotate: 'random(-28, 28)',
+        duration: 'random(7, 13)', repeat: -1, yoyo: true, repeatRefresh: true,
+        ease: 'sine.inOut', delay: i * 0.5, force3D: true,
       })
     })
     gsap.to(ref.current, {
