@@ -3,6 +3,10 @@ import { Nav } from './components/Nav'
 import { Footer } from './components/Footer'
 import { Hero } from './hero/Hero'
 import { SvgSprite } from './components/SvgSprite'
+import { Overview } from './sections/Overview'
+import { PanelAnatomy } from './sections/PanelAnatomy'
+import { Home } from './sections/Home'
+import { Text } from './sections/Text'
 
 export default function App() {
   return (
@@ -11,7 +15,10 @@ export default function App() {
       <Nav />
       <Hero />
       <main className="lg:pl-60">
-        {/* content sections added in Tasks 12–15 */}
+        <Overview />
+        <PanelAnatomy />
+        <Home />
+        <Text />
       </main>
       <Footer />
     </ThemeProvider>
