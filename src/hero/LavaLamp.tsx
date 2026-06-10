@@ -15,6 +15,10 @@ export function LavaLamp({ count = 6 }: { count?: number }) {
         duration: 8 + i * 1.7, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: i * 0.6,
       })
     })
+    gsap.to(ref.current, {
+      yPercent: 18, ease: 'none',
+      scrollTrigger: { trigger: ref.current, start: 'top top', end: 'bottom top', scrub: true },
+    })
   }, { scope: ref })
   return (
     <div ref={ref} className="lava" aria-hidden="true">
