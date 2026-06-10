@@ -11,6 +11,10 @@ import { Tagging } from './sections/Tagging'
 import { Sheets } from './sections/Sheets'
 import { Dupes } from './sections/Dupes'
 import { DupesAll } from './sections/DupesAll'
+import { Render } from './sections/Render'
+import { Cleanup } from './sections/Cleanup'
+import { LanguageSafety } from './sections/LanguageSafety'
+import { Naming } from './sections/Naming'
 
 export default function App() {
   return (
@@ -27,6 +31,10 @@ export default function App() {
         <Sheets />
         <Dupes />
         <DupesAll />
+        <Render />
+        <Cleanup />
+        <LanguageSafety />
+        <Naming />
       </main>
       <Footer />
     </ThemeProvider>
