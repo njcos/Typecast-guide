@@ -23,6 +23,7 @@ import { Glossary } from './sections/Glossary'
 export default function App() {
   return (
     <ThemeProvider>
+      <a href="#overview" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-2 focus:rounded focus:bg-paper focus:px-3 focus:py-2 focus:text-ink">Skip to content</a>
       <SvgSprite />
       <Nav />
       <Hero />
