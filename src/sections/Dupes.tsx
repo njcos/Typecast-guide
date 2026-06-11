@@ -76,7 +76,7 @@ export function Dupes() {
           </p>
         </div>
         <div>
-          <DemoSlot src="demos/language-mapping.gif" caption="Resolving an unmatched language header in the mapping window." />
+          <DemoSlot src="demos/language-mapping.gif" caption="Resolving an unmatched language header in the mapping window." w={382} h={239} />
         </div>
       </div>
     </Section>
