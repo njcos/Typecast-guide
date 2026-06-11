@@ -9,7 +9,7 @@ export function Hero() {
     // Rack focus: the word racks into focus from oversized + blurred, settling smoothly.
     gsap.fromTo(ref.current!.querySelector('h1'),
       { scale: 1.14, autoAlpha: 0, filter: 'blur(30px)' },
-      { scale: 1, autoAlpha: 1, filter: 'blur(0px)', duration: 1, ease: 'sine.out' })
+      { scale: 1, autoAlpha: 1, filter: 'blur(1.5px)', duration: 1, ease: 'sine.out' })
   }, { scope: ref })
   return (
     <header ref={ref} id="top" className="relative isolate grid min-h-screen place-items-center overflow-hidden bg-paper-bg px-6 text-left">

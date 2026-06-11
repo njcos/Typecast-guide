@@ -786,13 +786,17 @@
   }
   .dark .grain { mix-blend-mode: soft-light; opacity: 0.42; }
 
+  /* Slight soft-focus blur for an older-film look (the rack-focus settles here; this also
+     covers the reduced-motion case where the intro tween doesn't run). */
+  /* .hero-title { filter: blur(.25px); } */
+
   /* Title bloom only in dark mode, where the difference-inverted text reads light so an
      outer glow looks luminous. In light mode the text is black and a glow would invert to
      a dark halo, so it's left clean. */
   .dark .hero-title {
     text-shadow:
-      0 0 14px rgba(255, 255, 255, 0.5),
-      0 0 36px rgba(255, 255, 255, 0.32),
+      /* 0 0 14px rgba(255, 255, 255, 0.5), */
+      /* 0 0 36px rgba(255, 255, 255, 0.32), */
       0 0 72px rgba(255, 255, 255, 0.22);
   }
 
