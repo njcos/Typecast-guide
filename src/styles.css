@@ -772,6 +772,45 @@
      so overlaps brighten against each other, not against the page background. */
   .blob { position:absolute; border-radius:50%; background:hsl(var(--dept-orange)); mix-blend-mode:screen; will-change:transform; }
 
+  /* Chunky film grain over the hero (coarse fractalNoise, scaled up, overlay-blended). */
+  .grain {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27180%27%20height%3D%27180%27%3E%3Cfilter%20id%3D%27g%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.5%27%20numOctaves%3D%272%27%20stitchTiles%3D%27stitch%27%2F%3E%3CfeColorMatrix%20type%3D%27saturate%27%20values%3D%270%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20filter%3D%27url%28%23g%29%27%2F%3E%3C%2Fsvg%3E");
+    background-size: 240px 240px;
+    opacity: 0.34;
+    mix-blend-mode: overlay;
+    animation: grain-flicker 0.7s steps(1, end) infinite;
+  }
+  .dark .grain { mix-blend-mode: soft-light; opacity: 0.42; }
+
+  /* Title bloom only in dark mode, where the difference-inverted text reads light so an
+     outer glow looks luminous. In light mode the text is black and a glow would invert to
+     a dark halo, so it's left clean. */
+  .dark .hero-title {
+    text-shadow:
+      0 0 14px rgba(255, 255, 255, 0.5),
+      0 0 36px rgba(255, 255, 255, 0.32),
+      0 0 72px rgba(255, 255, 255, 0.22);
+  }
+
+  /* Jump the noise to a new offset each step so it flickers like real film grain. */
+  @keyframes grain-flicker {
+    0%   { background-position:   0%   0%; }
+    10%  { background-position: -12%   8%; }
+    20%  { background-position:  18% -14%; }
+    30%  { background-position:  -8% -20%; }
+    40%  { background-position:  22%  12%; }
+    50%  { background-position: -20%   6%; }
+    60%  { background-position:  10%  20%; }
+    70%  { background-position: -16%  -8%; }
+    80%  { background-position:  14%  16%; }
+    90%  { background-position:  -6% -12%; }
+    100% { background-position:   0%   0%; }
+  }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
