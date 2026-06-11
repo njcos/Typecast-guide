@@ -8,11 +8,15 @@
 // only narrower slot is the column-nested one in Dupes (382×239).
 export function DemoSlot({ src, caption, media = false, w = 976, h = 610 }: { src: string; caption?: string; media?: boolean; w?: number; h?: number }) {
   const label = src.replace(/^demos\//, '')
+  const url = `${import.meta.env.BASE_URL}${src}`
+  const isVideo = /\.(webm|mp4|mov)$/i.test(src)
   return (
     <figure className="demo my-6" data-reveal>
       <div className="frame">
         {media
-          ? <img src={`${import.meta.env.BASE_URL}${src}`} alt={caption ?? ''} loading="lazy" />
+          ? isVideo
+            ? <video src={url} autoPlay loop muted playsInline aria-label={caption ?? ''} />
+            : <img src={url} alt={caption ?? ''} loading="lazy" />
           : <div className="placeholder">
               ▸ GIF — {label}
               <span className="dims">make @ {w * 2} × {h * 2} px · displays {w} × {h}</span>

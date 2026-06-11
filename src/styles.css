@@ -135,6 +135,12 @@
     color: hsl(var(--ink));
     margin-bottom: 3px;
   }
+  /* The warn card keeps a light surface; in dark mode that left light-on-light
+     text unreadable. Give it a dark elevated surface so --ink text reads. */
+  .dark .warn {
+    background: hsl(0 0% 13%);
+    border-left-color: hsl(var(--dept-orange));
+  }
 
   /* ============================================================
      DEMO FIGURE — GIF / video embed (BOLD PASS final state)
@@ -659,11 +665,9 @@
 
   .anatomy {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 6px;
     margin: 5px 0;           /* 4pt */
-    overflow-x: auto;
-    overflow-y: hidden;
     padding-bottom: 4px;
   }
   .anatomy::-webkit-scrollbar { height: 6px; }

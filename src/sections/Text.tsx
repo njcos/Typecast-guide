@@ -52,7 +52,7 @@ export function Text() {
         </div>
       </div>
 
-      <DemoSlot src="demos/text-scan-tag-create.gif" caption="Scan the document, tag the layers, then build the Edit Comp." />
+      <DemoSlot src="assets/webm/scan-and-tag.webm" caption="Scan the document, tag the layers, then build the Edit Comp." media />
 
       <div className="split wide-left">
         <div>
@@ -114,7 +114,7 @@ export function Text() {
         look propagates across every sibling comp.
       </p>
 
-      <DemoSlot src="demos/styled-span-carryover.gif" caption="A styled brand word keeps its look as the translation is applied across sibling comps." />
+      <DemoSlot src="assets/webm/perchar.webm" caption="A styled brand word keeps its look as the translation is applied across sibling comps." media />
 
       <Callout variant="warn">
         <strong>It's a best effort, not a guarantee.</strong> Matching is by exact text, so

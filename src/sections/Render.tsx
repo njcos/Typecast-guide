@@ -71,7 +71,7 @@ export function Render() {
         </div>
       </div>
 
-      <DemoSlot src="demos/contact-sheet.gif" caption="Creating a contact sheet from the detected comps." />
+      <DemoSlot src="assets/webm/contact-sheet.webm" caption="Creating a contact sheet from the detected comps." media />
     </Section>
   )
 }

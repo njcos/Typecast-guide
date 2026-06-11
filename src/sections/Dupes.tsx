@@ -53,7 +53,7 @@ export function Dupes() {
         </div>
       </div>
 
-      <DemoSlot src="demos/dupes-translate.gif" caption="Choosing a source folder and target languages, then duplicating." />
+      <DemoSlot src="assets/webm/dups.webm" caption="Choosing a source folder and target languages, then duplicating." media />
 
       <div className="split wide-left">
         <div>
@@ -76,7 +76,7 @@ export function Dupes() {
           </p>
         </div>
         <div>
-          <DemoSlot src="demos/language-mapping.gif" caption="Resolving an unmatched language header in the mapping window." w={382} h={239} />
+          <DemoSlot src="assets/webm/csv-mismatch.webm" caption="Resolving an unmatched language header in the mapping window." w={382} h={239} media />
         </div>
       </div>
     </Section>

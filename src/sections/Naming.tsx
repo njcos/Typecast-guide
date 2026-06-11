@@ -102,7 +102,7 @@ export function Naming() {
         </div>
       </div>
 
-      <DemoSlot src="demos/invalid-comp-rename.gif" caption="The Invalid Comp Names validator: chip colours update live as you edit each slot; the Rename button activates the moment the full name is valid." />
+      <DemoSlot src="assets/webm/naming-safety.webm" caption="The Invalid Comp Names validator: chip colours update live as you edit each slot; the Rename button activates the moment the full name is valid." media />
 
       <h3>The text marker &amp; skip prefixes.</h3>
       <div className="split wide-left">

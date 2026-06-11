@@ -36,7 +36,7 @@ export function Tagging() {
         </div>
       </div>
 
-      <DemoSlot src="demos/tagging-window.gif" caption="Assigning tags to layers in the Tag Layers window." />
+      <DemoSlot src="assets/webm/tagging.webm" caption="Assigning tags to layers in the Tag Layers window." media />
 
       <h3>Common gotchas</h3>
       <ul>

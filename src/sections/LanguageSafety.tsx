@@ -63,7 +63,7 @@ export function LanguageSafety() {
       <h3>The mapping window</h3>
       <p>The floating window titled <strong>Map unrecognized columns</strong> opens automatically whenever any header is unrecognized or collides. It is a blocking step: the duplication workflow is paused until you act.</p>
 
-      <DemoSlot src="demos/language-mapping-window.gif" caption="The mapping window lists every problem header with its status and a resolution dropdown. Apply mapping is disabled until every row has a choice." />
+      <DemoSlot src="assets/webm/csv-mismatch-large.webm" caption="The mapping window lists every problem header with its status and a resolution dropdown. Apply mapping is disabled until every row has a choice." media />
 
       <div className="split">
         <div>

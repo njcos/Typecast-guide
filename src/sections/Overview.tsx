@@ -70,7 +70,7 @@ export function Overview() {
         <div className="statcard"><div className="num">06</div><div className="lbl">Cleanup</div></div>
       </div>
 
-      <DemoSlot src="demos/daily-flow.gif" caption="The end-to-end loop: scan, tag, build, sheets, dupes, render." />
+      <DemoSlot src="assets/webm/full-flow.webm" caption="The end-to-end loop: scan, tag, build, sheets, dupes, render." media />
     </Section>
   )
 }

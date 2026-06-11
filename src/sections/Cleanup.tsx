@@ -71,7 +71,7 @@ export function Cleanup() {
         </div>
       </div>
 
-      <DemoSlot src="demos/bake-cleanup.gif" caption="Stripping Typecast and cleaning up before handoff." />
+      <DemoSlot src="assets/webm/noip.webm" caption="Stripping Typecast and cleaning up before handoff." media />
     </Section>
   )
 }
