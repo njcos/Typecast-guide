@@ -26,10 +26,6 @@ export function Troubleshooting() {
             <td>Two columns resolve to the same language code. Pick the one that should win and leave the other unmapped.</td>
           </tr>
           <tr>
-            <th>"Review N uncertain match(es)" appears on the Text page after building the Edit Comp</th>
-            <td>One or more layer names were ambiguous — confirm the correct matches, reject the rest. Exact-name matches never appear here.</td>
-          </tr>
-          <tr>
             <th>A layer didn't translate / translated when it shouldn't have</th>
             <td>Check the layer name. Names starting with <span className="mono">_</span> (underscore) or <span className="mono">global</span> (any capitalisation) are intentionally skipped. Rename to include or exclude the layer.</td>
           </tr>

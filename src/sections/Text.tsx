@@ -1,6 +1,7 @@
 import { Section } from '../components/Section'
 import { SectionHeader } from '../components/SectionHeader'
 import { Callout } from '../components/Callout'
+import { StepList } from '../components/StepList'
 import { DemoSlot } from '../components/DemoSlot'
 
 export function Text() {
@@ -92,37 +93,81 @@ export function Text() {
           </Callout>
         </div>
         <div>
-          <h3>Cross-comp match review</h3>
+          <h3>Cross-comp linking is automatic</h3>
           <p>
-            When building the Edit Comp, the panel automatically attempts to link text layers across deliverable sibling comps by matching tag IDs. Matches the panel is uncertain about are surfaced in a bordered <strong>Review N uncertain match(es)</strong> box that appears below the Edit Comp actions. Each row shows <span className="mono">compName › layerName → tagId</span> with two buttons: <strong>Confirm</strong> accepts the link, <strong>Reject</strong> discards it. The review block disappears once all rows have been resolved.
+            When you build the Edit Comp, the panel links matching text layers across the deliverable's sibling comps for you — by tag id and layer name, scoped to the same creative. It runs silently in the background: there is no review step, no <strong>Confirm</strong>/<strong>Reject</strong> box, and nothing to resolve. A clean build simply links what it can and leaves the rest untouched.
           </p>
           <Callout variant="tip">
-            <strong>Where matches show up</strong>
-            The review box lives on the <span className="mono">TEXT</span> tab, directly beneath the Text Utilities actions. It only appears when there is something to confirm — a clean build shows no box at all.
+            <strong>How the matching works</strong>
+            The full rule set — how siblings are found by asset number and exactly what links automatically — is covered under <span className="mono">Cross-comp matching</span>.
           </Callout>
         </div>
       </div>
 
-      <h3>Per-character styling carries over</h3>
+      <header className="mt-16 mb-6 border-t border-dept pt-10" data-reveal>
+        <h3 className="mt-2 text-xl md:text-4xl font-black uppercase tracking-[0.02em] text-ink">Per-character styling carries over</h3>
+      </header>
       <p>
-        Style a single word differently inside a text layer — a brand name in another
-        font, one phrase in an accent colour — and Typecast does its best to keep that
-        styling when the layer's text is overwritten during <strong>Duplicate &amp;
-        Translate</strong> or <strong>Apply Translations</strong>. It captures the
-        per-character styling (fill colour, font, size, faux bold/italic) before the
-        overwrite and re-applies it to the matching words in the translated text, so the
-        look propagates across every sibling comp.
+        Style part of a layer differently — a brand word in another font, one phrase
+        in an accent colour, a single glyph bumped up a few points — and that styling
+        follows the copy across every sibling deliverable and every language. This is a
+        bigger deal than it sounds, because After Effects normally <em>destroys</em> it:
+        the instant a layer's source text is reassigned, every per-character style run
+        collapses to the first character's style. A styled word survives a translation
+        pass only because Typecast deliberately preserves it — and it does so in two
+        different ways depending on how the layer gets its text.
       </p>
+
+      <div className="band">
+        <div className="band-title">Linked layers — a live, full-fidelity mirror</div>
+        <p>
+          This is the path that makes styling "transfer from the Edit&nbsp;Comp." When a
+          layer is linked to the master text comp, its Source Text is driven by an
+          <strong> expression</strong> rather than overwritten. That expression rebuilds
+          the master's text one character at a time and copies the master's style at every
+          index — so the link carries the <em>complete</em> character style, not a handful
+          of attributes:
+        </p>
+        <StepList>
+          <li><strong>Type &amp; weight</strong> — font, size, faux bold, faux italic, all-caps, small-caps.</li>
+          <li><strong>Fill &amp; stroke</strong> — fill on/off and colour; stroke on/off, colour, and width.</li>
+          <li><strong>Spacing &amp; transform</strong> — tracking, leading, baseline shift, baseline option, horizontal and vertical scaling.</li>
+          <li><strong>Paragraph</strong> — justification, re-applied from the master (the per-character rebuild resets it, so it is restored explicitly).</li>
+        </StepList>
+        <p>
+          Because it is an expression, it is <strong>live</strong>: restyle a word in the
+          Edit&nbsp;Comp master and every linked size and length updates instantly, in every
+          language, with no re-duplication and no manual copy-paste. There is nothing to
+          "bake" — the look is recomputed from the master each frame. This path needs After
+          Effects 25.0 or newer and the JavaScript expression engine; the panel switches the
+          project to that engine automatically when it builds the Edit&nbsp;Comp.
+        </p>
+      </div>
 
       <DemoSlot src="assets/webm/perchar.webm" caption="A styled brand word keeps its look as the translation is applied across sibling comps." media />
 
+      <h3>The fallback: when text is overwritten directly</h3>
+      <p>
+        Layers that are <em>not</em> expression-linked — text written straight onto the
+        layer by <strong>Duplicate &amp; Translate</strong> or <strong>Apply
+        Translations</strong> — can't mirror live, so here Typecast falls back to a
+        best-effort capture-and-reapply. Just before the overwrite (while the runs are still
+        intact) it snapshots each styled word and the attributes it can carry —
+        <span className="mono"> font</span>, <span className="mono">size</span>,
+        <span className="mono"> faux&nbsp;bold</span>, <span className="mono">faux&nbsp;italic</span>,
+        and <span className="mono">fill&nbsp;colour</span> — writes the translated text, then
+        re-finds those exact words and re-applies the captured look.
+      </p>
+
       <Callout variant="warn">
-        <strong>It's a best effort, not a guarantee.</strong> Matching is by exact text, so
-        if a styled word is altered by the translation — different casing, punctuation, or
-        spelling — the styling won't carry and the word returns in the layer's base style.
-        Re-running into an <em>existing</em> language folder also can't recover styling that
-        was already flattened; delete the folder and duplicate fresh to restore it. Always
-        spot-check brand words after a pass.
+        <strong>The fallback is a best effort, not a guarantee.</strong> It carries a smaller
+        set of attributes than the live link, and it matches by <em>exact</em> word text — so
+        if the translation re-cases, re-punctuates, or respells a styled word, it won't match
+        and that word returns in the layer's base style. Re-running into an <em>existing</em>
+        language folder also can't recover styling that was already flattened on a previous
+        pass; delete the folder and duplicate fresh to restore it. Whenever you can, keep
+        brand words on linked layers so they ride the live mirror instead — and spot-check
+        them after any overwrite pass.
       </Callout>
     </Section>
   )
