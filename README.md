@@ -9,23 +9,6 @@ A single-page React site documenting the Typecast After Effects CEP panel. Conte
 - **Tailwind CSS v3** — class-based dark mode (`darkMode: 'class'`)
 - **GSAP** (`gsap` + `@gsap/react`) — scroll-triggered section animations and lava-lamp hero
 
-## Scripts
-
-| Command | What it does |
-|---|---|
-| `npm run dev` | Start the Vite dev server |
-| `npm run build` | Type-check (`tsc -b`) then build to `dist/` |
-| `npm run preview` | Serve the production build locally |
-| `npm test` | Run Vitest once |
-
-## Deploy
-
-Pushed to GitHub Pages via `.github/workflows/deploy.yml` on every push to `main`.
-
-**Required repo setting:** GitHub → Settings → Pages → Source = **"GitHub Actions"**.
-
-The Vite `base` option is set to `/Typecast-guide/` in `vite.config.ts` and must match the repository name. If you host at a different path or custom domain, update `base` there.
-
 ## Content source
 
 All prose and UI mockup content was ported verbatim from `typecast-guide.html` in the `deptTool` repo. Demo slots are placeholders (`src/components/DemoSlot.tsx`) until real GIFs are added under `public/demos/`.
