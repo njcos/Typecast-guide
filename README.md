@@ -2,8 +2,6 @@
 
 A single-page React site documenting the Typecast After Effects CEP panel. Content ported verbatim from the original print guide; deployed to GitHub Pages.
 
-**Live site:** https://njcos.github.io/Typecast-guide/
-
 ## Stack
 
 - **React 19** + **TypeScript**
